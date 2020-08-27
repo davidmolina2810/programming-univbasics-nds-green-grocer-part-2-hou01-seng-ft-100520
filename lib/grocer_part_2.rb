@@ -32,7 +32,7 @@ def apply_coupons(cart, coupons)
                           clearance: item[:clearance], count: item[:count]}
           item[:count] -= discount_item[:num]
           cart << discounted
-          cart.delete_at(cart.find_index(item))
+          #cart.delete_at(cart.find_index(item))
           #binding.pry
         end
         #binding.pry
