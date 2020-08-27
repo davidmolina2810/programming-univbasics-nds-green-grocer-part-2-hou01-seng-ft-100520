@@ -9,20 +9,28 @@ def apply_coupons(cart, coupons)
   #   2. iterate through cart and assign each hash to 'item'
   #     3. if discount_item[:item] == item[:item]
   #       4. count = 0
-    #       4. while (item[:count] is >= discount_item[:num]) &&
-    #                 (item[:count] - discount_item[:num] != 0)
-    #         5. item[:count] -= discount[:num]
-    #         6. count += discount[:num]
-    #         7. if item[:count] == 1
-    #           8. cart << {item: item[:item] + " W/COUPON", price == discount_item[:cost] / discount_item[:num],
-    #                           clearance: item[:clearance], count: count}
-    #       9. if item[:count] == 0
-    #         10. cart << {item: item[:item] + " W/COUPON", price == discount_item[:cost]/ discount_item[:num],
-    #                           clearance: item[:clearance], count: count}
-    # 12. return cart
+    #       5. if item[:count] == discount_item[:num]
+    #         6. new hash with item name + "W/COUPON", discounted price, clearance,
+    #             and the correct count of discounted items and assign discounted
+    #         7. item[:count] -= discount_item[:num]
+    #         8. add discounted to cart
+  #         9. if item[:count] > discount_item[:num]
+  #           10. while item count is >= discounted item num
+  #             11. item count -= discounted item num
+  #             12. add discounted item num to count
+  #           13. new hash with item name + "W/COUPON", discounted price, clearance,
+  #             and the correct count of discounted items and assign discounted
+  #           14. add discounted to cart 
+  #         7. if item[:count] == 1
+  #           8. cart << {item: item[:item] + " W/COUPON", price == discount_item[:cost] / discount_item[:num],
+  #                           clearance: item[:clearance], count: count}
+  #       9. if item[:count] == 0
+
+  #         10. cart << {item: item[:item] + " W/COUPON", price == discount_item[:cost]/ discount_item[:num],
+  #                           clearance: item[:clearance], count: count}
+  # 12. return cart
   cart.each do |item|
     coupons.each do |discount_item|
-      #binding.pry
       if discount_item[:item] == item[:item]
         count = 0
         if item[:count] == discount_item[:num]
@@ -30,24 +38,20 @@ def apply_coupons(cart, coupons)
                           clearance: item[:clearance], count: item[:count]}
           item[:count] -= discount_item[:num]
           cart << discounted
-          #cart.delete_at(cart.find_index(item))
-          #binding.pry
         end
         if item[:count] > discount_item[:num]
-          #binding.pry
           while (item[:count] >= discount_item[:num]) do
             item[:count] -= discount_item[:num]
             count += discount_item[:num]
-            #binding.pry
           end
-          cart << {item: item[:item] + " W/COUPON", price: discount_item[:cost]/discount_item[:num],\
+          discounted = {item: item[:item] + " W/COUPON", price: discount_item[:cost]/discount_item[:num],\
                         clearance: item[:clearance], count: count}
+          cart << discounted
         end
       end
     end
   end
   cart
-  #binding.pry
 end
 
 
