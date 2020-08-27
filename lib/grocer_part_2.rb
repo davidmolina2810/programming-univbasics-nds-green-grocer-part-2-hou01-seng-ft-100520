@@ -34,23 +34,23 @@ def apply_coupons(cart, coupons)
           cart << discounted
           #cart.delete_at(cart.find_index(item))
           #binding.pry
-        end
-        #binding.pry
-        while (item[:count] >= discount_item[:num]) && (item[:count] - discount_item[:num] != 0)
-          item[:count] -= discount[:num]
-          count += discount[:num]
+        elsif item[:count] > discount_item[:num]
           #binding.pry
-          if item[:count] == 1
-            cart << {item: item[:item] + " W/COUPON", price: discount_item[:cost]/discount_item[:num],\
-                      clearance: item[:clearance], count: count}
+          while (item[:count] >= discount_item[:num]) do 
+            item[:count] -= discount[:num]
+            count += discount[:num]
+            #binding.pry
           end
+        cart << {item: item[:item] + " W/COUPON", price: discount_item[:cost]/discount_item[:num],\
+                        clearance: item[:clearance], count: count}
+            end
+          end
+          #binding.pry
         end
-        #binding.pry
       end
     end
+    cart
   end
-  cart
-end
 
 def apply_clearance(cart)
   # Consult README for inputs and outputs
