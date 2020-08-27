@@ -21,10 +21,10 @@ def apply_coupons(cart, coupons)
     #                           clearance: item[:clearance], count: count}
     #         11. cart.delete_at(cart.find(item))
     # 12. return cart
-  binding.pry
+
   coupons.each do |discount_item|
     cart.each do |item|
-      binding.pry 
+      binding.pry
       if discount_item[:item] == item[:item]
         count = 0
         while (item[:count] >= discount_item[:num]) && (item[:count] - discount_item[:num] != 0)
