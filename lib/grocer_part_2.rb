@@ -24,6 +24,7 @@ def apply_coupons(cart, coupons)
   binding.pry
   coupons.each do |discount_item|
     cart.each do |item|
+      binding.pry 
       if discount_item[:item] == item[:item]
         count = 0
         while (item[:count] >= discount_item[:num]) && (item[:count] - discount_item[:num] != 0)
