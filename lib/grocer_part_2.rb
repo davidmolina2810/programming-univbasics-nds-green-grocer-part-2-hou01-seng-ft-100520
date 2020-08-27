@@ -30,6 +30,7 @@ def apply_coupons(cart, coupons)
         if item[:count] == discount_item[:num]
           discounted = {item: item[:item] + " W/COUPON", price: discount_item[:cost] / discount_item[:num],\
                           clearance: item[:clearance], count: item[:count]}
+          item[:count] -= discount_item[:num]
           cart << discounted
           cart.delete_at(cart.find_index(item))
           binding.pry
