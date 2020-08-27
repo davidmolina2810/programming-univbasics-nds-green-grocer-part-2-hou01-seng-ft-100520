@@ -33,7 +33,7 @@ def apply_coupons(cart, coupons)
           item[:count] -= discount_item[:num]
           cart << discounted
           cart.delete_at(cart.find_index(item))
-          binding.pry
+          #binding.pry
         end
         #binding.pry
         while (item[:count] >= discount_item[:num]) && (item[:count] - discount_item[:num] != 0)
