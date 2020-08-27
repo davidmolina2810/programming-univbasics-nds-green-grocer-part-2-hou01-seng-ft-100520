@@ -40,7 +40,7 @@ def apply_coupons(cart, coupons)
           cart << {item: item[:item] + " W/COUPON", price: discount_item[:cost]/discount_item[:num],\
                       clearance: item[:clearance], count: count}
           cart.delete_at(cart.find(item))
-          binding.pry 
+          binding.pry
         end
       end
     end
