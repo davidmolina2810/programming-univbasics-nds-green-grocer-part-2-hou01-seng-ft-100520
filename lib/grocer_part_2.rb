@@ -75,7 +75,7 @@ def checkout(cart, coupons)
   # some irritated customers
   total = 0
   consolidated = consolidate_cart(cart)
-  consolidated_wc = apply_coupons(consolidated)
+  consolidated_wc = apply_coupons(consolidated, coupons)
   consolidated_wc_and_clearance = apply_clearance(consolidated_wc)
   consolidated_wc_and_clearance.each do |item|
     item_total = item[:price] * item[:count]
