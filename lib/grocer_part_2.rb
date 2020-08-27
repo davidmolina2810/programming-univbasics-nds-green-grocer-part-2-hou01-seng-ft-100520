@@ -72,6 +72,5 @@ def checkout(cart, coupons)
   #
   # BEFORE it begins the work of calculating the total (or else you might have
   # some irritated customers
-  consolidated = consolidate_cart(cart) #consolidate items in cart
-  consolidated_wc_and_clearance = apply_clearance(apply_coupons(consolidated, coupons)) #apply coupons to consolidated cart
+  consolidated = consolidate_cart(cart)
 end
