@@ -24,7 +24,7 @@ def apply_coupons(cart, coupons)
 
   coupons.each do |discount_item|
     cart.each do |item|
-      binding.pry
+      #binding.pry
       if discount_item[:item] == item[:item]
         count = 0
         if item[:count] == discount_item[:num]
