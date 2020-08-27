@@ -21,36 +21,38 @@ def apply_coupons(cart, coupons)
     #                           clearance: item[:clearance], count: count}
     #         11. cart.delete_at(cart.find(item))
     # 12. return cart
-
-  coupons.each do |discount_item|
-    cart.each do |item|
-      #binding.pry
-      if discount_item[:item] == item[:item]
-        count = 0
-        if item[:count] == discount_item[:num]
-          discounted = {item: item[:item] + " W/COUPON", price: discount_item[:cost] / discount_item[:num],\
-                          clearance: item[:clearance], count: item[:count]}
-          item[:count] -= discount_item[:num]
-          cart << discounted
-          #cart.delete_at(cart.find_index(item))
-          #binding.pry
-        elsif item[:count] > discount_item[:num]
-          #binding.pry
-          while (item[:count] >= discount_item[:num]) do 
-            item[:count] -= discount[:num]
-            count += discount[:num]
+  if coupons
+    coupons.each do |discount_item|
+      cart.each do |item|
+        #binding.pry
+        if discount_item[:item] == item[:item]
+          count = 0
+          if item[:count] == discount_item[:num]
+            discounted = {item: item[:item] + " W/COUPON", price: discount_item[:cost] / discount_item[:num],\
+                            clearance: item[:clearance], count: item[:count]}
+            item[:count] -= discount_item[:num]
+            cart << discounted
+            #cart.delete_at(cart.find_index(item))
+            #binding.pry
+          elsif item[:count] > discount_item[:num]
+            #binding.pry
+            while (item[:count] >= discount_item[:num]) do 
+              item[:count] -= discount[:num]
+              count += discount[:num]
+              #binding.pry
+            end
+            cart << {item: item[:item] + " W/COUPON", price: discount_item[:cost]/discount_item[:num],\
+                          clearance: item[:clearance], count: count}
+          else 
+            
+              end
+            end
             #binding.pry
           end
-        cart << {item: item[:item] + " W/COUPON", price: discount_item[:cost]/discount_item[:num],\
-                        clearance: item[:clearance], count: count}
-            end
-          end
-          #binding.pry
         end
       end
+      cart
     end
-    cart
-  end
 
 def apply_clearance(cart)
   # Consult README for inputs and outputs
