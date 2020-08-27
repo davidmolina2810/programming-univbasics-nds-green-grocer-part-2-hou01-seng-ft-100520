@@ -30,11 +30,11 @@ def apply_coupons(cart, coupons)
           item[:item] = item[:item] + " W/COUPON"
           item[:price] = discount_item[:cost] / discount_item[:num]
         end
-        #binding.pry
+        binding.pry
         while (item[:count] >= discount_item[:num]) && (item[:count] - discount_item[:num] != 0)
           item[:count] -= discount[:num]
           count += discount[:num]
-          #binding.pry
+          binding.pry
           if item[:count] == 1
             cart << {item: item[:item] + " W/COUPON", price: discount_item[:cost]/discount_item[:num],\
                       clearance: item[:clearance], count: count}
