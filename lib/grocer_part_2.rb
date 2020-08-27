@@ -24,15 +24,11 @@ def apply_coupons(cart, coupons)
 
   coupons.each do |discount_item|
     cart.each do |item|
-      #binding.pry
       if discount_item[:item] == item[:item]
         count = 0
-        #binding.pry
         if item[:count] == discount_item[:num]
           item[:item] = item[:item] + " W/COUPON"
-          #binding.pry
           item[:price] = discount_item[:cost] / discount_item[:num]
-          binding.pry
         end
         binding.pry
         while (item[:count] >= discount_item[:num]) && (item[:count] - discount_item[:num] != 0)
