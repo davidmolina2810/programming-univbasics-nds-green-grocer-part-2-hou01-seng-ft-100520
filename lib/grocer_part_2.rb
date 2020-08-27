@@ -40,7 +40,7 @@ def apply_coupons(cart, coupons)
                       clearance: item[:clearance], count: count}
           end
         end
-        binding.pry
+        #binding.pry
       end
     end
   end
