@@ -20,7 +20,7 @@ def apply_coupons(cart, coupons)
   #             12. add discounted item num to count
   #           13. new hash with item name + "W/COUPON", discounted price, clearance,
   #             and the correct count of discounted items and assign discounted
-  #           14. add discounted to cart 
+  #           14. add discounted to cart
   #         7. if item[:count] == 1
   #           8. cart << {item: item[:item] + " W/COUPON", price == discount_item[:cost] / discount_item[:num],
   #                           clearance: item[:clearance], count: count}
